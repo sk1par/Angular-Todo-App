@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', component: CategoryComponent },
-  { path: 'todo', component: TodoComponent }
+  { path: 'todo/:id', component: TodoComponent }
 ];
 
 @NgModule({

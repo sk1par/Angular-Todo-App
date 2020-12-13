@@ -41,7 +41,7 @@
                 </div>
 
 
-                <div class="todo-content">
+                <div class="todo-content" [routerLink] = "['/todo', category.id]">
                     <h3 [style.color]='category.data.colorCode'>{{ category.data.category }}</h3>
                     <small class="text-secondary">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</small>
                 </div>
