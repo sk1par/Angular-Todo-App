@@ -1,6 +1,6 @@
 import { CategoryService } from './../service/category.service';
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-category',
@@ -8,6 +8,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
+  @ViewChild('category') nameField: ElementRef;
+
   color: Array<string> = ['#e7845e', '#fc0184', '#f6b93f', '#9224a7', '#20c898', '#f03734', '#aad450', '#026467', '#fefefe', '#928779',
     '#D4D2A5', '#FCDEBE', '#90A583', '#B26E63', '#C6CAED'];
 
@@ -45,10 +47,11 @@ export class CategoryComponent implements OnInit {
 
   }
 
-  onEdit(category: string, id: string) {
-    this.categoryName = category;
-    this.dataStatus = 'Edit';
-    this.categoryId = id;
+  onEdit(category: string, id: string, f: FormGroup) {
+      this.categoryName = category;
+      this.dataStatus = 'Edit';
+      this.categoryId = id;
+      this.nameField.nativeElement.focus();
   }
 
   onDelete(id: string) {

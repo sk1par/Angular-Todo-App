@@ -11,10 +11,10 @@
     <div class="col-md-12">
         <form action="" class="form-inline" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(f)">
             <div class="col-md-10 form-group">
-                <input type="text" placeholder="Add new Todos here" name="todoName"
+                <input type="text" placeholder="Add new Todos here" name="todoName" #todo
                     class="form-control-plaintext drop-shadow"
                     [(ngModel)]='todoName' required #todo = 'ngModel'
-                    [ngClass]="{'border-danger': f.submitted && todo.invalid}"
+                    [ngClass]="{'border-danger': f.submitted && todo.invalid}" 
                     >
             </div>
             <button type="submit" class="btn btn-primary col-md-2 btn-todo btn-block drop-shadow">{{ dataStatus }}</button>

@@ -12,7 +12,7 @@
         <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(f)" class="form-inline">
             <div class="col-md-10 form-group">
                 <input 
-                    type="text" placeholder="Add new Categories here" name="categoryName"
+                    type="text" placeholder="Add new Categories here" name="categoryName" #category 
                     class="form-control-plaintext drop-shadow border-danger"
                     [(ngModel)] = 'categoryName' required #category = 'ngModel'
                     [ngClass]="{'border-danger': f.submitted && category.invalid}">
@@ -35,7 +35,7 @@
                         <div class="badge badge-primary">CATEGORY</div>
                     </div>
                     <div class="float-right cat-tools">
-                        <small><i class="fa fa-pencil-alt text-success" (click)="onEdit(category.data.category, category.id)"></i></small>
+                        <small><i class="fa fa-pencil-alt text-success" (click)="onEdit(category.data.category, category.id, f)"></i></small>
                         <small><i class="fas fa-trash text-danger" (click)="onDelete(category.id)"></i></small>
                     </div>
                 </div>

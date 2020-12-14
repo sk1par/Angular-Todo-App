@@ -1,5 +1,5 @@
 import { TodoService } from './../service/todo.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
+  @ViewChild('todo') nameField: ElementRef;
   categoryId: string;
   todos: Array<any>;
   todoName = '';
@@ -46,6 +47,7 @@ export class TodoComponent implements OnInit {
     this.todoName = todo;
     this.dataStatus = 'Edit';
     this.todoId = id;
+    this.nameField.nativeElement.focus();
   }
 
   onDelete(id: string) {
