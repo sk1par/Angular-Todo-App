@@ -10,4 +10,5 @@ header {
     padding: 10px 50px;
     border-radius: 50px;
     cursor: pointer;
+    outline: none;
 }

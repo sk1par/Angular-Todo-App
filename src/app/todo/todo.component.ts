@@ -47,4 +47,16 @@ export class TodoComponent implements OnInit {
     this.dataStatus = 'Edit';
     this.todoId = id;
   }
+
+  onDelete(id: string) {
+    this.todoService.deleteTodo(this.categoryId, id);
+  }
+
+  completeTodo(todoId: string) {
+    this.todoService.markComplete(this.categoryId, todoId);
+  }
+
+  incompleteTodo(todoId: string) {
+    this.todoService.markIncomplete(this.categoryId, todoId);
+  }
 }

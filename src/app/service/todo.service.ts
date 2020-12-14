@@ -36,4 +36,23 @@ export class TodoService {
       this.toastr.success('Todo Updated Successfully!');
     });
   }
+
+  deleteTodo(catId: string, todoId: string) {
+    this.afs.collection('categories').doc(catId).collection('todos').doc(todoId).delete().then(() => {
+      this.afs.doc(`categories/${catId}`).update({todoCount: firebase.firestore.FieldValue.increment(-1)});
+      this.toastr.error('Todo was successfully deleted!');
+    });
+  }
+
+  markComplete(catId: string, todoId: string) {
+    this.afs.collection('categories').doc(catId).collection('todos').doc(todoId).update({isCompleted: true}).then(() => {
+      this.toastr.info('Todo Market Complete');
+    });
+  }
+
+  markIncomplete(catId: string, todoId: string) {
+    this.afs.collection('categories').doc(catId).collection('todos').doc(todoId).update({isCompleted: false}).then(() => {
+      this.toastr.warning('Todo Market Incomplete');
+    });
+  }
 }
